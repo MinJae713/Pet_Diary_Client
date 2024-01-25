@@ -17,7 +17,10 @@ const Community = ({ route }) => {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{ title: "커뮤니티" }}
+            options={{
+              headerShown: false,
+              title: "커뮤니티",
+            }}
           />
           <Stack.Screen
             name="Screen"

@@ -8,7 +8,6 @@ import CheckListWeekly from "../components/checkList/CheckListWeekly";
 import AddTaskInput from "../components/checkList/AddTaskInput";
 import TodoList from "../components/checkList/TodoList";
 import MediumText from "../components/checkList/MediumText";
-import BoldText from "../components/checkList/BoldText";
 import {
   year,
   month,
@@ -27,8 +26,9 @@ import {
   toggleTodoCheckAPI,
 } from "../api/Checklist";
 import propTypes from "prop-types";
+import HeaderComp from "../header/HeaderComp";
 
-const CheckList = ({ route }) => {
+const CheckList = ({ navigation, route }) => {
   let client = route.params.client;
   const [selectedDate, setSelectedDate] = useState(todate);
   const [Todos, setTodos] = useState([]);
@@ -97,7 +97,7 @@ const CheckList = ({ route }) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.content}>
-        <BoldText style={styles.title}>CHECKLIST</BoldText>
+        <HeaderComp navigation={navigation} title={"Checklist"} />
         <View style={styles.weekly}>
           <MediumText
             style={{
@@ -133,6 +133,7 @@ const CheckList = ({ route }) => {
 };
 
 CheckList.propTypes = {
+  navigation: propTypes.object.isRequired,
   route: propTypes.object.isRequired,
 };
 

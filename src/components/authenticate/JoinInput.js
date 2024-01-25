@@ -49,7 +49,11 @@ const Input = (props) => {
         }}
         placeholder={getMessage()}
         keyboardType={
-          props.inputType == InputType.AGE ? "number-pad" : "default"
+          props.inputType == InputType.AGE
+            ? "number-pad"
+            : props.inputType == InputType.PW
+            ? "ascii-capable"
+            : "default"
         }
         returnKeyType="done"
         autoCapitalize="none"

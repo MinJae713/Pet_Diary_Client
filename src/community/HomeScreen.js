@@ -13,6 +13,7 @@ import {
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { getScreenTitlesAPI } from "../api/Community";
+import HeaderComp from "../header/HeaderComp";
 
 const HomeScreen = ({ navigation }) => {
   // 메인, 서브 스크린 제목도 DB에서 불러오면 좋을텐디
@@ -47,136 +48,6 @@ const HomeScreen = ({ navigation }) => {
     if (screenType == "main") setMainScreen(infos);
     else if (screenType == "sub") setSubScreen(infos);
   };
-  const mainScreenInfos = [
-    {
-      key: "C1",
-      title: "고양이 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "고양이",
-        }),
-    },
-    {
-      key: "C2",
-      title: "강아지 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "강아지",
-        }),
-    },
-    {
-      key: "C3",
-      title: "조류 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "조류",
-        }),
-    },
-    {
-      key: "C4",
-      title: "양서류 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "양서류",
-        }),
-    },
-    {
-      key: "C5",
-      title: "파충류 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "파충류",
-        }),
-    },
-    {
-      key: "C6",
-      title: "분양 게시판",
-      iconName: "paw",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "분양",
-        }),
-    },
-    {
-      key: "C7",
-      title: "의료 정보 게시판",
-      iconName: "heart-plus",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "의료 정보",
-        }),
-    },
-  ];
-  const subScreenInfos = [
-    {
-      key: "C8",
-      title: "핫딜 게시판",
-      iconName: "cart-heart",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "핫딜",
-        }),
-    },
-    {
-      key: "C9",
-      title: "여행 게시판",
-      iconName: "wallet-travel",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "여행",
-        }),
-    },
-    {
-      key: "C10",
-      title: "취미 게시판",
-      iconName: "dice-3",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "취미",
-        }),
-    },
-    {
-      key: "C11",
-      title: "음식 게시판",
-      iconName: "food",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "음식",
-        }),
-    },
-    {
-      key: "C12",
-      title: "중고장터",
-      iconName: "cart",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "중고장터",
-        }),
-    },
-    {
-      key: "C13",
-      title: "사진 게시판",
-      iconName: "format-wrap-square",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "사진",
-        }),
-    },
-    {
-      key: "C14",
-      title: "일상 게시판",
-      iconName: "campfire",
-      onPress: () =>
-        navigation.navigate("Screen", {
-          screenTitle: "일상",
-        }),
-    },
-  ];
   const mainScreenSelect = Object.values(mainScreen).map((item) => (
     <TouchableOpacity
       key={item.key}
@@ -204,6 +75,8 @@ const HomeScreen = ({ navigation }) => {
       <StatusBar barStyle="dark-content" />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView style={styles.container}>
+          <View style={{ marginBottom: 40 }} />
+          <HeaderComp navigation={navigation} title={"Community"} />
           <View style={styles.boardContainer}>
             <Text style={styles.title}>메인 게시판</Text>
             {mainScreenSelect}
